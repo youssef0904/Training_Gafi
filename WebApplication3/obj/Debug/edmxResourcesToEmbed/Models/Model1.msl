@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CompanyDataModelStoreContainer" CdmEntityContainer="CompanyDataEntities">
+    <EntitySetMapping Name="CompanyDatas">
+      <EntityTypeMapping TypeName="CompanyDataModel.CompanyData">
+        <MappingFragment StoreEntitySet="CompanyData">
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="EstablishDate" ColumnName="EstablishDate" />
+          <ScalarProperty Name="LawID" ColumnName="LawID" />
+          <ScalarProperty Name="IssuedCapital" ColumnName="IssuedCapital" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LawTypes">
+      <EntityTypeMapping TypeName="CompanyDataModel.LawType">
+        <MappingFragment StoreEntitySet="LawTypes">
+          <ScalarProperty Name="LawTypeID" ColumnName="LawTypeID" />
+          <ScalarProperty Name="LawTypeName" ColumnName="LawTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CompanyDataModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

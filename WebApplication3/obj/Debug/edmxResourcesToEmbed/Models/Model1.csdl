@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CompanyDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CompanyData">
+    <Key>
+      <PropertyRef Name="CompanyID" />
+    </Key>
+    <Property Name="CompanyID" Type="Int16" Nullable="false" />
+    <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EstablishDate" Type="DateTime" Precision="3" />
+    <Property Name="LawID" Type="Byte" Nullable="false" />
+    <Property Name="IssuedCapital" Type="Decimal" Precision="14" Scale="2" Nullable="false" />
+    <NavigationProperty Name="LawType" Relationship="Self.FK_CompanyData_LawTypes" FromRole="CompanyData" ToRole="LawTypes" />
+  </EntityType>
+  <EntityType Name="LawType">
+    <Key>
+      <PropertyRef Name="LawTypeID" />
+    </Key>
+    <Property Name="LawTypeID" Type="Byte" Nullable="false" />
+    <Property Name="LawTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CompanyDatas" Relationship="Self.FK_CompanyData_LawTypes" FromRole="LawTypes" ToRole="CompanyData" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_CompanyData_LawTypes">
+    <End Role="LawTypes" Type="Self.LawType" Multiplicity="1" />
+    <End Role="CompanyData" Type="Self.CompanyData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LawTypes">
+        <PropertyRef Name="LawTypeID" />
+      </Principal>
+      <Dependent Role="CompanyData">
+        <PropertyRef Name="LawID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CompanyDataEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CompanyDatas" EntityType="Self.CompanyData" />
+    <EntitySet Name="LawTypes" EntityType="Self.LawType" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_CompanyData_LawTypes" Association="Self.FK_CompanyData_LawTypes">
+      <End Role="LawTypes" EntitySet="LawTypes" />
+      <End Role="CompanyData" EntitySet="CompanyDatas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

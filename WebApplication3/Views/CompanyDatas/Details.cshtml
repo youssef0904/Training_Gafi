@@ -1,0 +1,50 @@
+﻿@model WebApplication3.Models.CompanyData
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CompanyData</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstablishDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstablishDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IssuedCapital)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IssuedCapital)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LawType.LawTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LawType.LawTypeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CompanyID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
